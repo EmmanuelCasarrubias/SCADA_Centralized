@@ -1,0 +1,18 @@
+import dash_html_components as html
+import dash_core_components as dcc
+import plotly.graph_objects as go
+import numpy as np
+
+def layout():
+    x = np.linspace(0, 10, 100)
+    y = np.exp(-x)
+    fig = go.Figure(go.Scatter(x=x, y=y, mode='lines'))
+    fig.update_layout(title='Señal Exponencial Decreciente', xaxis_title='X', yaxis_title='Y')
+
+    return html.Div([
+        html.H1("Subsistema Central del Norte", id='norte-title'),
+        html.H2("Descripción del Subsistema Central del Norte", id='norte-subtitle'),
+        html.P("Aquí va el contenido específico del subsistema del Norte."),
+        dcc.Graph(figure=fig),
+        html.A(html.Button('Volver a Centro'), href='/')
+    ])
